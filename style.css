@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&family=Roboto:wght@400;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+body {
+    font-family: 'Muli', sans-serif;
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    /* background-color: #3f3f3f; */
+
+    background: rgb(67, 67, 67);
+    background: radial-gradient(
+        circle,
+        rgba(67, 67, 67, 1) 50%,
+        rgba(18, 18, 18, 1) 99%
+    );
+}
+
+.container {
+    display: flex;
+    justify-content: flex-end;
+    width: 80vw;
+    flex-direction: row;
+}
+
+.panel {
+    background-size: cover; /*Makes the image fit the entire container - even if some of the pic is cut off */
+    background-position: center; /*Positions the picture in the center of the parent element*/
+    background-repeat: no-repeat; /*The pic only shows once*/
+    height: 80vh;
+    border-radius: 70px;
+    color: #fff;
+    cursor: pointer;
+    width: 5vw;
+    /* flex-grow: 1;*/ /*Determines the ability of a flex item to grow if any available space in the container.*/
+    /* flex-shrink: 1; */ /*Specifies the ability of a flex item to shrink relative to other items when necessary.*/
+    /* flex-basis: 1;  */ /*Sets the initial size of a flex item before remaining space is distributed.*/
+    /*flex: 1; /*Shorthand for the 3 flex above. */
+
+    margin: 10px;
+    position: relative;
+    transition: width 0.8s ease-in, transform 0.4s ease-in; /*The transition: flex creates a transition to the elements with the flex property if it changes size
+    transform create a scale on panel when*/
+    box-shadow: 5px 5px 5px #232323;
+    transition: scale(1.1) 0.4s ease-in;
+}
+
+.panel:hover {
+    transform: scale(1.005);
+}
+
+.panel h3 {
+    font-size: 24px;
+    position: absolute; /*this combined with position relative for the immediate parent container, makes the h3 element's position relative to the immediate parent instead of the entire viewport*/
+    bottom: 20px;
+    left: 20px;
+    margin: 0;
+    opacity: 0; /*makes the h3 text invisible aka transparent*/
+}
+
+.panel.active {
+    width: 50vw;
+    /* flex: 5; /*When the active class in used, the pic with that class will take up 5 times as much space as the other elements with flex: 1; 
+    opacity: 1; /*makes the text visible*/
+}
+
+/*Shows the h3 text on the panel with the active class*/
+.panel.active h3 {
+    opacity: 1;
+    transition: opacity 0.3s ease-in 0.4s; /*the opacity transition has a delay of 0.4s, which means the transition will start after 0.4sec which is when 
+    the panel has almost fully opened (see transition on the panel class */
+}
+
+/* when the screen size is less than 480px, the container takes up, the entire width of the screen */
+@media (max-width: 480px) {
+    .container {
+        width: 100vw;
+    }
+
+    /* nth-of-type() er en CSS-pseudoklasse, 
+    der i dette tilfælde vælger det fjerde og femte element af sin type inden 
+    for sin overordnede container. */
+    .panel:nth-of-type(4),
+    .panel:nth-of-type(5) {
+        display: none; /*Det vil sige, når screen width er under 480px, fjerner vi de sidte to billeder*/
+    }
+}
