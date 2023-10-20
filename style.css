@@ -23,8 +23,8 @@ body {
 
 .container {
     display: flex;
-    justify-content: flex-end;
-    width: 80vw;
+    justify-content: center;
+    width: 95vw;
     flex-direction: row;
 }
 
@@ -64,7 +64,7 @@ body {
 }
 
 .panel.active {
-    width: 50vw;
+    width: 70vw;
     /* flex: 5; /*When the active class in used, the pic with that class will take up 5 times as much space as the other elements with flex: 1; 
     opacity: 1; /*makes the text visible*/
 }
@@ -89,4 +89,8 @@ body {
     .panel:nth-of-type(5) {
         display: none; /*Det vil sige, når screen width er under 480px, fjerner vi de sidte to billeder*/
     }
+
+    /* .panel.active {
+        width: 70vw;
+    } */
 }
